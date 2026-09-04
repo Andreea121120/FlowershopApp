@@ -1,4 +1,4 @@
-# Online FLowershop App
+# Online Flowershop App
 
 Web application for an online flower shop, built with ASP.NET MVC, featuring two user roles:
 
