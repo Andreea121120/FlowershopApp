@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<center>
+    <h1>Despre compania noastră, Bucuria Florilor</h1>
+    &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;
+</center>
+
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
+
+    <div style="flex: 0 0 30%; padding-right: 20px; text-align: center; margin-top: 40px;">
+        <button style="width: 200px !important;" onclick="changeText('produse_si_servicii')">Produse și servicii</button><br>
+        <button style="width: 200px !important;" onclick="changeText('Cum_platesc')">Cum Plătesc?</button><br>
+        <button style="width: 200px !important;" onclick="changeText('Intrebari_f')">Intrebări frecvente</button><br>
+         <button style="width: 200px !important;" onclick="changeText('Cum_platesc')">Cum Plătesc?</button><br>
+    </div>
+
+
+
+    <div style="flex: 0 0 70%; display: flex; justify-content: center; align-items: center;">
+        <p id="text-paragraph">
+            Eden Floral este florăria online care aduce frumusețea și eleganța florilor direct la ușa ta. Oferim o selecție variată de flori proaspete, buchete rafinate și aranjamente florale pentru orice ocazie, de la aniversări și nunți până la momente speciale sau gesturi de apreciere. Cu livrare rapidă și servicii personalizate, ne asigurăm că fiecare comandă este o experiență memorabilă.
+        </p>
+    </div>
+</div>
+
+<script>
+    function changeText(section) {
+        const paragraph = document.getElementById('text-paragraph');
+
+        if (section === 'produse_si_servicii') {
+            paragraph.innerHTML = `
+                <h4>Buchete de flori</h4>
+                Buchetele de flori sunt un cadou clasic și elegant, potrivit pentru orice ocazie. Fie că vrei să oferi flori pentru o aniversare, o zi de naștere, sau pur și simplu pentru a aduce un zâmbet pe fața cuiva drag, buchetele noastre sunt realizate cu flori proaspete și atent selecționate. Iată câteva dintre cele mai populare buchete pe care le oferim:
+                Buchet de trandafiri: </h5>Trandafirii sunt un simbol al iubirii și romantismului, fiind ideali pentru ocazii speciale, cum ar fi zilele de naștere sau aniversările. Poți alege buchete cu trandafiri roșii pentru o ocazie romantică, sau trandafiri albi pentru o atmosferă mai elegantă și rafinată.
+                Buchet de lalelel: </h5>Lalelele sunt flori vesele și colorate, perfecte pentru primăvară. Acestea sunt ideale pentru a celebra un nou început sau pentru a adăuga o notă de prospețime în orice zi. Buchetele de lalele pot fi realizate în diverse combinații de culori.
+                Buchet mixt: </h5>Un buchet mixt este o alegere versatilă, care poate include o varietate de flori, cum ar fi trandafiri, lalele, gerbera, frezie sau crizanteme. Acestea sunt ideale pentru a transmite o gamă largă de mesaje, de la apreciere și iubire, până la felicitări și mulțumiri.
+                Buchet de flori de sezon: </h5>În funcție de sezon, oferim buchete cu flori specifice, cum ar fi crăciunițe pentru iarnă, sau narcise și lalele pentru primăvară. Aceste buchete sunt ideale pentru a sărbători sărbătorile de sezon sau pentru a adăuga o notă de festivitate în orice casă.
+                 &nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;
+                <h4>Aranjamente florare</h4>
+                <h5>Aranjamente florare: </h5>Aranjamentele florale sunt o alegere excelentă pentru a decora o masă, un birou sau un colț de cameră. Acestea sunt ideale pentru evenimente speciale, cum ar fi nunți, botezuri sau petreceri, dar și pentru a adăuga frumusețe unui spațiu de zi cu zi. Iată câteva dintre cele mai populare tipuri de aranjamente florale pe care le oferim:
+                <h5>Aranjamente florare pentru nunți: </h5>Aranjamentele pentru nunți sunt esențiale pentru a crea o atmosferă de vis.
+                <h5>Aranjamente pentru botezuri: </h5>Aranjamentele pentru botezuri sunt delicate și adesea realizate în diverse culori vii.
+                <h5>Aranjamente de masă</h5> Dacă vrei să adaugi un plus de eleganță unei mese festive sau unui birou, aranjamentele de masă sunt alegerea perfectă.
+                 &nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;
+                <h4>Plante de apartament</h4>
+                Plantele de apartament sunt ideale pentru a adăuga viață și culoare în orice spațiu interior. Florăria noastră oferă o selecție variată de plante de apartament, perfecte pentru orice tip de interior:
+                <h5>Plante cu flori: </h5>Dacă îți dorești o plantă care să aducă un plus de culoare în casa ta, plantele cu flori sunt alegerea perfectă.
+                <h5>Plante cu frunze decorative</h5>Plantele precum Ficus lyrata (ficus cu frunze mari), Dracaena, sau Monstera sunt ideale pentru a adăuga un strop de verdeață în living sau birou.
+                 &nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;
+               
+            `;
+        } else if (section ==='Cum_platesc') {
+            paragraph.innerHTML = `
+                <h4> Site-ul nostru vă oferă posibilitatea de a plăti, folosind următoarele modalităţi de plată:</h4>
+
+                <h5>Plata online cu ajutorul cardului</h5>
+                Este cea mai simplă metodă de plată, se realizează online, şi este disponibilă tuturor clienţilor care posedă un card de credit sau debit: Visa, Mastercard. Plata cu PayU nu presupune să aveţi un cont special. PayU e metoda preferată de majoritatea clienţilor noştri şi poate fi folosită atât timp cât aveţi activat serviciul de plăţi online aferent cardului.
+                 &nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;
+                <h5>Plata online prin PayPal</h5>
+                Pentru a plăti prin Paypal, trebuie să aveţi un cont pe www.paypal.com. Dacă nu aveţi, vă puteţi înregistra şi crea unul.
+                 &nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;
+                `;
+        } else if(section==='Intrebari_f') {
+            paragraph.innerHTML = `
+                <h4> Livraţi flori oriunde în România?</h4>
+                Expresia care ne-a consacrat de-a lungul anilor, "livrăm flori la domiciliu oriunde în  Livraţi flori oriunde în România?" e perfect justificată. Livrăm flori şi în toate localităţile din România:
+                Pentru mai multe detalii, vă stăm la dispoziţie la numerele de telefon: 07211211211, 02122321212.
+                 &nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;
+                 <h4> Care sunt condiţiile de întreţinere ale unui buchet de flori?</h4>
+                Fiecare buchet de flori care se realizează în cadrul Florăriilor Magnolia are ataşat un pliculeţ de conservant. Acesta se adauga in ½ l de apă. Rezistenţa prelungită a florilor presupune schimbarea apei zilnic. Apoi, cu cât tija unei flori este mai scurtă şi are mai puţine frunze, cu atât floarea rezistă mai mult. Vă recomandăm să aşezaţi florile departe de sursa de caldură sau de lumină. Tăiaţi periodic cozile cu un cuţit/cutter (nu cu foarfeca) într-un unghi de 45 grade la cca 2-3 cm de bază.
+                 &nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;
+                 <h4>Care sunt condițiile de întreținere pentru aranjamentele florale?</h4>
+                 Cu cât tija unei flori este mai scurtă şi are mai puţine frunze, cu atât floarea rezistă mai mult. La aranjamentele în vas sau coș realizate în burete floral, e recomandat ca acestea din urmă să fie udat la 2-3 flori. Aşezaţi aranjamentul departe de surse de căldură sau de lumină.
+                 &nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;
+                 <h4>Care sunt condițiile de întreținere pentru plantele de interior?</h4>
+                 <h5>Transvazarea:</h5> Transversarea se face anual sau o dată la 2 ani (de obicei primăvara), în funcţie de creşterea plantei şi numai atunci când planta nu e înflorită. Ghiveciul în care se transvazează planta trebuie să aibă diametru cu 2-3 cm mai mare decât cel actual.
+                 <h5>Îngrăşământul:>/h5>Îngrăşământul se administrează iarna, de regulă o dată la 2 săptămâni, iar în restul anului, o dată pe săptămână îngrăşământ specific fiecărei plante (decorativă prin flori, prin frunze, orhidee, cactuşi, etc).
+                 <h5>Apa:</h5> Plantele se udă cu apă la temperatura camerei, vara mai des, iarna mai rar şi de preferinţă cu apă de ploaie. Udarea se face atunci când observaţi că 2-3 cm de la suprafaţa solului s-a uscat.
+                 <h5Lumina:</h5> Se aşează în lumină moderată fără a sta în razele directe ale soarelui.
+                 <h5>Temperatură şi umiditate:</h5> Cu cât temperatura e mai ridicată, cu atât plantele au nevoie de mai multă umiditate.
+                 <h5>PulverizareaIarna</h5>, umiditatea fiind mai scăzută, unele plante trebuie pulverizate pe frunze. Celor care nu suportă pulverizarea directă, li se poate crea o atmosferă umedă prin poziţionarea sub ghiveci a unei tăviţe cu apă şi pietricele.
+
+            `;
+        }
+    }
+</script>
+
+
+

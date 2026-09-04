@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Produs";
+}
+
+<h2 class="text-center">@Model.NumeProdus</h2>
+
+<div class="container mx-auto m-5">
+    <div class="row">
+        <div class="col-8">
+            <img src="~/Content/Imagini/@ViewBag.Denumirecategorie/@Model.Imagine" class="img-fluid" alt="Imagine" />
+        </div>
+        <div class="col-4 my-auto">
+            <h3>@Model.NumeProdus</h3>
+            <br />
+            <h6>@Model.Descriere</h6>
+            <h6>Include ambalaj si felicitare cadou</h6>
+            <h6>Livrarea este gratuita in Bucuresti</h6>
+            <br />
+            <h5>@Model.Pret</h5>
+            <br />
+            <form method="post" action="@Url.Action("AdaugaInCos", "Produse",  new { idProdus = @Model.IdProdus } )">
+                <input type="hidden" name="idProdus" value="@Model.IdProdus" />
+                <input type="hidden" name="cantitate" value="1" />
+                <button type="submit" class="btn btn-primary">Adaugă în cos</button>
+            </form>
+        </div>
+    </div>
+</div>

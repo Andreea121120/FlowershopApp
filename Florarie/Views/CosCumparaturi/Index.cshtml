@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Florarie.DAL.ProduseCos_Result>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+<div style="text-align: center">
+    <h2>Produsele mele</h2>
+</div>
+
+<p>
+    &nbsp;
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Imagine
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeProdus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pret)
+        </th>
+        <th>Cantitate</th>
+        <th>Valoare Totală</th>
+        <th>Acțiuni</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@Url.Content("~/Content/Imagini/" + item.DenumireCategorie + "/" + item.Imagine)"
+                     alt="@item.NumeProdus"
+                     style="width: 100px; height: 100px;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeProdus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pret)
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.Cantitate)</td>
+            <td>
+                @String.Format("{0:0} lei", item.Cantitate * item.Pret)
+            </td>
+            <td>
+
+                @Html.ActionLink("Detalii produs", "Detalii", "Produse", new { id = item.IdProdus }, null) |
+                @using (Html.BeginForm("Delete", "CosCumparaturi", FormMethod.Post))
+                {
+                    @Html.Hidden("id", item.IdProdus)
+                    <input type="submit" value="Delete" />
+                }
+            </td>
+        </tr>
+    }
+    <tfoot>
+        <tr>
+            <td colspan="4" class="text-right"><strong>Total:</strong></td>
+            <td colspan="2">
+                <strong>@String.Format("{0:0} lei", ViewBag.SumaTotala)</strong>
+            </td>
+        </tr>
+    </tfoot>
+
+</table>
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <a href="@Url.Action("PlaseazaComanda", "CosCumparaturi")">Plasează comanda</a>
+
+}
+else
+{
+    <div style="color:red">
+        <p>Va rog sa va autentificati pentru a putea plasa comanda!</p>
+    </div>
+
+}
+
+

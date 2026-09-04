@@ -1,0 +1,46 @@
+﻿@model Florarie.DAL.Clienti
+
+@{
+    ViewBag.Title = "Pagina Profil";
+}
+<div style="text-align: center">
+    <h2>Profilul meu</h2>
+</div>
+
+
+<div>
+    <div style="display: flex; justify-content: space-between; gap: 20px;">
+
+        <div style="flex: 1; text-align: center; margin-top: 40px;">
+
+            <div class="image-container">
+                <img src="~/Img/image.png" alt="Imagine stânga">
+            </div>
+
+        </div>
+        <div style="flex: 1; text-align: center; margin-top: 40px;">
+
+            <div class="form-container">
+                @Html.Partial("~/Views/ProfilUtilizator/_PaginaProfil.cshtml", Model)
+
+            </div>
+
+        </div>
+        <div style="flex: 1; text-align: center; margin-top: 40px;">
+
+            <div class="image-container">
+                <img src="~/Img/image.png" alt="Imagine stânga">
+            </div>
+
+        </div>
+    </div>
+    <p>&nbsp;</p>
+    <div style="text-align:center">
+    <form action="@Url.Action("Edit", "ProfilUtilizator")" method="get">
+        <button type="submit">Edit</button>
+    </form>
+    </div>
+    <p>&nbsp;</p>
+
+</div>
+

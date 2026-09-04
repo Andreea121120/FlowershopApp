@@ -1,0 +1,1015 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FlorarieModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Carduri">
+          <Key>
+            <PropertyRef Name="IdCard" />
+          </Key>
+          <Property Name="IdCard" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="NumeCard" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NumarCard" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="DataExpirareCard" Type="date" Nullable="false" />
+          <Property Name="CVV" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoriiProduse">
+          <Key>
+            <PropertyRef Name="IdCategorie" />
+          </Key>
+          <Property Name="IdCategorie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DenumireCategorie" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clienti">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUtilizator" Type="int" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Prenume" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Localitate" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comenzi">
+          <Key>
+            <PropertyRef Name="IdComanda" />
+          </Key>
+          <Property Name="IdComanda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataComanda" Type="date" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="IdClient" Type="int" />
+        </EntityType>
+        <EntityType Name="Cos">
+          <Key>
+            <PropertyRef Name="IdCos" />
+          </Key>
+          <Property Name="IdCos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUtilizator" Type="int" Nullable="false" />
+          <Property Name="IdProdus" Type="int" Nullable="false" />
+          <Property Name="Cantitate" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetaliiComanda">
+          <Key>
+            <PropertyRef Name="IdDetaliuComanda" />
+          </Key>
+          <Property Name="IdDetaliuComanda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdComanda" Type="int" Nullable="false" />
+          <Property Name="IdProdus" Type="int" Nullable="false" />
+          <Property Name="Cantitate" Type="int" Nullable="false" />
+          <Property Name="PretUnitate" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Favorite">
+          <Key>
+            <PropertyRef Name="IdFavorite" />
+          </Key>
+          <Property Name="IdFavorite" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUtilizator" Type="int" Nullable="false" />
+          <Property Name="IdProdus" Type="int" Nullable="false" />
+          <Property Name="DataAdaugare" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Livrari">
+          <Key>
+            <PropertyRef Name="IdLivrare" />
+          </Key>
+          <Property Name="IdLivrare" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdComanda" Type="int" Nullable="false" />
+          <Property Name="AdresaLivrare" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CompanieCurierat" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DataLivrare" Type="date" Nullable="false" />
+          <Property Name="StatusLivrare" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plati">
+          <Key>
+            <PropertyRef Name="IdPlata" />
+          </Key>
+          <Property Name="IdPlata" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdComanda" Type="int" Nullable="false" />
+          <Property Name="MetodaPlata" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Suma" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="DataPlata" Type="date" Nullable="false" />
+          <Property Name="IdCard" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Produse">
+          <Key>
+            <PropertyRef Name="IdProdus" />
+          </Key>
+          <Property Name="IdProdus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumeProdus" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Pret" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Stoc" Type="int" Nullable="false" />
+          <Property Name="UM" Type="nvarchar" MaxLength="50" />
+          <Property Name="Imagine" Type="nvarchar" MaxLength="255" />
+          <Property Name="Descriere" Type="nvarchar(max)" />
+          <Property Name="IdCategorie" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roluri">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DenumireRol" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoluriUtilizatori">
+          <Key>
+            <PropertyRef Name="IdRolUtilizator" />
+          </Key>
+          <Property Name="IdRolUtilizator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUtilizator" Type="int" Nullable="false" />
+          <Property Name="IdRol" Type="int" Nullable="false" />
+          <Property Name="DataAcordare" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Utilizatori">
+          <Key>
+            <PropertyRef Name="IdUtilizator" />
+          </Key>
+          <Property Name="IdUtilizator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="DataCreare" Type="date" Nullable="false" />
+          <Property Name="Blocat" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Cos__IdProdus__403A8C7D">
+          <End Role="Produse" Type="Self.Produse" Multiplicity="1" />
+          <End Role="Cos" Type="Self.Cos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produse">
+              <PropertyRef Name="IdProdus" />
+            </Principal>
+            <Dependent Role="Cos">
+              <PropertyRef Name="IdProdus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cos__IdUtilizato__412EB0B6">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1" />
+          <End Role="Cos" Type="Self.Cos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="IdUtilizator" />
+            </Principal>
+            <Dependent Role="Cos">
+              <PropertyRef Name="IdUtilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetaliiCo__IdCom__4222D4EF">
+          <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="1" />
+          <End Role="DetaliiComanda" Type="Self.DetaliiComanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comenzi">
+              <PropertyRef Name="IdComanda" />
+            </Principal>
+            <Dependent Role="DetaliiComanda">
+              <PropertyRef Name="IdComanda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetaliiCo__IdPro__4316F928">
+          <End Role="Produse" Type="Self.Produse" Multiplicity="1" />
+          <End Role="DetaliiComanda" Type="Self.DetaliiComanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produse">
+              <PropertyRef Name="IdProdus" />
+            </Principal>
+            <Dependent Role="DetaliiComanda">
+              <PropertyRef Name="IdProdus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Favorite__IdProd__440B1D61">
+          <End Role="Produse" Type="Self.Produse" Multiplicity="1" />
+          <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produse">
+              <PropertyRef Name="IdProdus" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="IdProdus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Favorite__IdUtil__44FF419A">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1" />
+          <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="IdUtilizator" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="IdUtilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Livrari__IdComan__45F365D3">
+          <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="1" />
+          <End Role="Livrari" Type="Self.Livrari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comenzi">
+              <PropertyRef Name="IdComanda" />
+            </Principal>
+            <Dependent Role="Livrari">
+              <PropertyRef Name="IdComanda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plati__IdComanda__46E78A0C">
+          <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="1" />
+          <End Role="Plati" Type="Self.Plati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comenzi">
+              <PropertyRef Name="IdComanda" />
+            </Principal>
+            <Dependent Role="Plati">
+              <PropertyRef Name="IdComanda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Produse__IdCateg__48CFD27E">
+          <End Role="CategoriiProduse" Type="Self.CategoriiProduse" Multiplicity="1" />
+          <End Role="Produse" Type="Self.Produse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriiProduse">
+              <PropertyRef Name="IdCategorie" />
+            </Principal>
+            <Dependent Role="Produse">
+              <PropertyRef Name="IdCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoluriUti__IdRol__49C3F6B7">
+          <End Role="Roluri" Type="Self.Roluri" Multiplicity="1" />
+          <End Role="RoluriUtilizatori" Type="Self.RoluriUtilizatori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roluri">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="RoluriUtilizatori">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoluriUti__IdUti__4AB81AF0">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1" />
+          <End Role="RoluriUtilizatori" Type="Self.RoluriUtilizatori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="IdUtilizator" />
+            </Principal>
+            <Dependent Role="RoluriUtilizatori">
+              <PropertyRef Name="IdUtilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carduri_Clienti">
+          <End Role="Clienti" Type="Self.Clienti" Multiplicity="1" />
+          <End Role="Carduri" Type="Self.Carduri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clienti">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Carduri">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clienti__IdUtilizator">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Clienti" Type="Self.Clienti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="IdUtilizator" />
+            </Principal>
+            <Dependent Role="Clienti">
+              <PropertyRef Name="IdUtilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comenzi_Clienti">
+          <End Role="Clienti" Type="Self.Clienti" Multiplicity="0..1" />
+          <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clienti">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Comenzi">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plati_Carduri">
+          <End Role="Carduri" Type="Self.Carduri" Multiplicity="1" />
+          <End Role="Plati" Type="Self.Plati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carduri">
+              <PropertyRef Name="IdCard" />
+            </Principal>
+            <Dependent Role="Plati">
+              <PropertyRef Name="IdCard" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ProduseCos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUtilizator" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="FlorarieModelStoreContainer">
+          <EntitySet Name="Carduri" EntityType="Self.Carduri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoriiProduse" EntityType="Self.CategoriiProduse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clienti" EntityType="Self.Clienti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comenzi" EntityType="Self.Comenzi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cos" EntityType="Self.Cos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetaliiComanda" EntityType="Self.DetaliiComanda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Favorite" EntityType="Self.Favorite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Livrari" EntityType="Self.Livrari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plati" EntityType="Self.Plati" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Produse" EntityType="Self.Produse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roluri" EntityType="Self.Roluri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoluriUtilizatori" EntityType="Self.RoluriUtilizatori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilizatori" EntityType="Self.Utilizatori" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cos__IdProdus__403A8C7D" Association="Self.FK__Cos__IdProdus__403A8C7D">
+            <End Role="Produse" EntitySet="Produse" />
+            <End Role="Cos" EntitySet="Cos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cos__IdUtilizato__412EB0B6" Association="Self.FK__Cos__IdUtilizato__412EB0B6">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Cos" EntitySet="Cos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetaliiCo__IdCom__4222D4EF" Association="Self.FK__DetaliiCo__IdCom__4222D4EF">
+            <End Role="Comenzi" EntitySet="Comenzi" />
+            <End Role="DetaliiComanda" EntitySet="DetaliiComanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetaliiCo__IdPro__4316F928" Association="Self.FK__DetaliiCo__IdPro__4316F928">
+            <End Role="Produse" EntitySet="Produse" />
+            <End Role="DetaliiComanda" EntitySet="DetaliiComanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Favorite__IdProd__440B1D61" Association="Self.FK__Favorite__IdProd__440B1D61">
+            <End Role="Produse" EntitySet="Produse" />
+            <End Role="Favorite" EntitySet="Favorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Favorite__IdUtil__44FF419A" Association="Self.FK__Favorite__IdUtil__44FF419A">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Favorite" EntitySet="Favorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Livrari__IdComan__45F365D3" Association="Self.FK__Livrari__IdComan__45F365D3">
+            <End Role="Comenzi" EntitySet="Comenzi" />
+            <End Role="Livrari" EntitySet="Livrari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plati__IdComanda__46E78A0C" Association="Self.FK__Plati__IdComanda__46E78A0C">
+            <End Role="Comenzi" EntitySet="Comenzi" />
+            <End Role="Plati" EntitySet="Plati" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Produse__IdCateg__48CFD27E" Association="Self.FK__Produse__IdCateg__48CFD27E">
+            <End Role="CategoriiProduse" EntitySet="CategoriiProduse" />
+            <End Role="Produse" EntitySet="Produse" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoluriUti__IdRol__49C3F6B7" Association="Self.FK__RoluriUti__IdRol__49C3F6B7">
+            <End Role="Roluri" EntitySet="Roluri" />
+            <End Role="RoluriUtilizatori" EntitySet="RoluriUtilizatori" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoluriUti__IdUti__4AB81AF0" Association="Self.FK__RoluriUti__IdUti__4AB81AF0">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="RoluriUtilizatori" EntitySet="RoluriUtilizatori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carduri_Clienti" Association="Self.FK_Carduri_Clienti">
+            <End Role="Clienti" EntitySet="Clienti" />
+            <End Role="Carduri" EntitySet="Carduri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clienti__IdUtilizator" Association="Self.FK_Clienti__IdUtilizator">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Clienti" EntitySet="Clienti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comenzi_Clienti" Association="Self.FK_Comenzi_Clienti">
+            <End Role="Clienti" EntitySet="Clienti" />
+            <End Role="Comenzi" EntitySet="Comenzi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plati_Carduri" Association="Self.FK_Plati_Carduri">
+            <End Role="Carduri" EntitySet="Carduri" />
+            <End Role="Plati" EntitySet="Plati" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FlorarieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Carduri">
+          <Key>
+            <PropertyRef Name="IdCard" />
+          </Key>
+          <Property Name="IdCard" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="NumeCard" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumarCard" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataExpirareCard" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CVV" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Clienti" Relationship="Self.FK_Carduri_Clienti" FromRole="Carduri" ToRole="Clienti" />
+          <NavigationProperty Name="Plati" Relationship="Self.FK_Plati_Carduri" FromRole="Carduri" ToRole="Plati" />
+        </EntityType>
+        <EntityType Name="CategoriiProduse">
+          <Key>
+            <PropertyRef Name="IdCategorie" />
+          </Key>
+          <Property Name="IdCategorie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DenumireCategorie" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Produse" Relationship="Self.FK__Produse__IdCateg__48CFD27E" FromRole="CategoriiProduse" ToRole="Produse" />
+        </EntityType>
+        <EntityType Name="Clienti">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUtilizator" Type="Int32" Nullable="false" />
+          <Property Name="Nume" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prenume" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adresa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Localitate" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Carduri" Relationship="Self.FK_Carduri_Clienti" FromRole="Clienti" ToRole="Carduri" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK_Clienti__IdUtilizator" FromRole="Clienti" ToRole="Utilizatori" />
+          <NavigationProperty Name="Comenzi" Relationship="Self.FK_Comenzi_Clienti" FromRole="Clienti" ToRole="Comenzi" />
+        </EntityType>
+        <EntityType Name="Comenzi">
+          <Key>
+            <PropertyRef Name="IdComanda" />
+          </Key>
+          <Property Name="IdComanda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataComanda" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="IdClient" Type="Int32" />
+          <NavigationProperty Name="Clienti" Relationship="Self.FK_Comenzi_Clienti" FromRole="Comenzi" ToRole="Clienti" />
+          <NavigationProperty Name="DetaliiComanda" Relationship="Self.FK__DetaliiCo__IdCom__4222D4EF" FromRole="Comenzi" ToRole="DetaliiComanda" />
+          <NavigationProperty Name="Livrari" Relationship="Self.FK__Livrari__IdComan__45F365D3" FromRole="Comenzi" ToRole="Livrari" />
+          <NavigationProperty Name="Plati" Relationship="Self.FK__Plati__IdComanda__46E78A0C" FromRole="Comenzi" ToRole="Plati" />
+        </EntityType>
+        <EntityType Name="Cos">
+          <Key>
+            <PropertyRef Name="IdCos" />
+          </Key>
+          <Property Name="IdCos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUtilizator" Type="Int32" Nullable="false" />
+          <Property Name="IdProdus" Type="Int32" Nullable="false" />
+          <Property Name="Cantitate" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Produse" Relationship="Self.FK__Cos__IdProdus__403A8C7D" FromRole="Cos" ToRole="Produse" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK__Cos__IdUtilizato__412EB0B6" FromRole="Cos" ToRole="Utilizatori" />
+        </EntityType>
+        <EntityType Name="DetaliiComanda">
+          <Key>
+            <PropertyRef Name="IdDetaliuComanda" />
+          </Key>
+          <Property Name="IdDetaliuComanda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdComanda" Type="Int32" Nullable="false" />
+          <Property Name="IdProdus" Type="Int32" Nullable="false" />
+          <Property Name="Cantitate" Type="Int32" Nullable="false" />
+          <Property Name="PretUnitate" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Comenzi" Relationship="Self.FK__DetaliiCo__IdCom__4222D4EF" FromRole="DetaliiComanda" ToRole="Comenzi" />
+          <NavigationProperty Name="Produse" Relationship="Self.FK__DetaliiCo__IdPro__4316F928" FromRole="DetaliiComanda" ToRole="Produse" />
+        </EntityType>
+        <EntityType Name="Favorite">
+          <Key>
+            <PropertyRef Name="IdFavorite" />
+          </Key>
+          <Property Name="IdFavorite" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUtilizator" Type="Int32" Nullable="false" />
+          <Property Name="IdProdus" Type="Int32" Nullable="false" />
+          <Property Name="DataAdaugare" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Produse" Relationship="Self.FK__Favorite__IdProd__440B1D61" FromRole="Favorite" ToRole="Produse" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK__Favorite__IdUtil__44FF419A" FromRole="Favorite" ToRole="Utilizatori" />
+        </EntityType>
+        <EntityType Name="Livrari">
+          <Key>
+            <PropertyRef Name="IdLivrare" />
+          </Key>
+          <Property Name="IdLivrare" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdComanda" Type="Int32" Nullable="false" />
+          <Property Name="AdresaLivrare" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanieCurierat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataLivrare" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StatusLivrare" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Comenzi" Relationship="Self.FK__Livrari__IdComan__45F365D3" FromRole="Livrari" ToRole="Comenzi" />
+        </EntityType>
+        <EntityType Name="Plati">
+          <Key>
+            <PropertyRef Name="IdPlata" />
+          </Key>
+          <Property Name="IdPlata" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdComanda" Type="Int32" Nullable="false" />
+          <Property Name="MetodaPlata" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Suma" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="DataPlata" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdCard" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Carduri" Relationship="Self.FK_Plati_Carduri" FromRole="Plati" ToRole="Carduri" />
+          <NavigationProperty Name="Comenzi" Relationship="Self.FK__Plati__IdComanda__46E78A0C" FromRole="Plati" ToRole="Comenzi" />
+        </EntityType>
+        <EntityType Name="Produse">
+          <Key>
+            <PropertyRef Name="IdProdus" />
+          </Key>
+          <Property Name="IdProdus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumeProdus" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pret" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Stoc" Type="Int32" Nullable="false" />
+          <Property Name="UM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Imagine" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Descriere" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdCategorie" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CategoriiProduse" Relationship="Self.FK__Produse__IdCateg__48CFD27E" FromRole="Produse" ToRole="CategoriiProduse" />
+          <NavigationProperty Name="Cos" Relationship="Self.FK__Cos__IdProdus__403A8C7D" FromRole="Produse" ToRole="Cos" />
+          <NavigationProperty Name="DetaliiComanda" Relationship="Self.FK__DetaliiCo__IdPro__4316F928" FromRole="Produse" ToRole="DetaliiComanda" />
+          <NavigationProperty Name="Favorite" Relationship="Self.FK__Favorite__IdProd__440B1D61" FromRole="Produse" ToRole="Favorite" />
+        </EntityType>
+        <EntityType Name="Roluri">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DenumireRol" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RoluriUtilizatori" Relationship="Self.FK__RoluriUti__IdRol__49C3F6B7" FromRole="Roluri" ToRole="RoluriUtilizatori" />
+        </EntityType>
+        <EntityType Name="RoluriUtilizatori">
+          <Key>
+            <PropertyRef Name="IdRolUtilizator" />
+          </Key>
+          <Property Name="IdRolUtilizator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUtilizator" Type="Int32" Nullable="false" />
+          <Property Name="IdRol" Type="Int32" Nullable="false" />
+          <Property Name="DataAcordare" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Roluri" Relationship="Self.FK__RoluriUti__IdRol__49C3F6B7" FromRole="RoluriUtilizatori" ToRole="Roluri" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK__RoluriUti__IdUti__4AB81AF0" FromRole="RoluriUtilizatori" ToRole="Utilizatori" />
+        </EntityType>
+        <EntityType Name="Utilizatori">
+          <Key>
+            <PropertyRef Name="IdUtilizator" />
+          </Key>
+          <Property Name="IdUtilizator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DataCreare" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Blocat" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Clienti" Relationship="Self.FK_Clienti__IdUtilizator" FromRole="Utilizatori" ToRole="Clienti" />
+          <NavigationProperty Name="Cos" Relationship="Self.FK__Cos__IdUtilizato__412EB0B6" FromRole="Utilizatori" ToRole="Cos" />
+          <NavigationProperty Name="Favorite" Relationship="Self.FK__Favorite__IdUtil__44FF419A" FromRole="Utilizatori" ToRole="Favorite" />
+          <NavigationProperty Name="RoluriUtilizatori" Relationship="Self.FK__RoluriUti__IdUti__4AB81AF0" FromRole="Utilizatori" ToRole="RoluriUtilizatori" />
+        </EntityType>
+        <Association Name="FK_Carduri_Clienti">
+          <End Role="Clienti" Type="Self.Clienti" Multiplicity="1" />
+          <End Role="Carduri" Type="Self.Carduri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clienti">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Carduri">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plati_Carduri">
+          <End Role="Carduri" Type="Self.Carduri" Multiplicity="1" />
+          <End Role="Plati" Type="Self.Plati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carduri">
+              <PropertyRef Name="IdCard" />
+            </Principal>
+            <Dependent Role="Plati">
+              <PropertyRef Name="IdCard" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Produse__IdCateg__48CFD27E">
+          <End Role="CategoriiProduse" Type="Self.CategoriiProduse" Multiplicity="1" />
+          <End Role="Produse" Type="Self.Produse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriiProduse">
+              <PropertyRef Name="IdCategorie" />
+            </Principal>
+            <Dependent Role="Produse">
+              <PropertyRef Name="IdCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clienti__IdUtilizator">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Clienti" Type="Self.Clienti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="IdUtilizator" />
+            </Principal>
+            <Dependent Role="Clienti">
+              <PropertyRef Name="IdUtilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comenzi_Clienti">
+          <End Role="Clienti" Type="Self.Clienti" Multiplicity="0..1" />
+          <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clienti">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Comenzi">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetaliiCo__IdCom__4222D4EF">
+          <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="1" />
+          <End Role="DetaliiComanda" Type="Self.DetaliiComanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comenzi">
+              <PropertyRef Name="IdComanda" />
+            </Principal>
+            <Dependent Role="DetaliiComanda">
+              <PropertyRef Name="IdComanda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Livrari__IdComan__45F365D3">
+          <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="1" />
+          <End Role="Livrari" Type="Self.Livrari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comenzi">
+              <PropertyRef Name="IdComanda" />
+            </Principal>
+            <Dependent Role="Livrari">
+              <PropertyRef Name="IdComanda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plati__IdComanda__46E78A0C">
+          <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="1" />
+          <End Role="Plati" Type="Self.Plati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comenzi">
+              <PropertyRef Name="IdComanda" />
+            </Principal>
+            <Dependent Role="Plati">
+              <PropertyRef Name="IdComanda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cos__IdProdus__403A8C7D">
+          <End Role="Produse" Type="Self.Produse" Multiplicity="1" />
+          <End Role="Cos" Type="Self.Cos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produse">
+              <PropertyRef Name="IdProdus" />
+            </Principal>
+            <Dependent Role="Cos">
+              <PropertyRef Name="IdProdus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cos__IdUtilizato__412EB0B6">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1" />
+          <End Role="Cos" Type="Self.Cos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="IdUtilizator" />
+            </Principal>
+            <Dependent Role="Cos">
+              <PropertyRef Name="IdUtilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetaliiCo__IdPro__4316F928">
+          <End Role="Produse" Type="Self.Produse" Multiplicity="1" />
+          <End Role="DetaliiComanda" Type="Self.DetaliiComanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produse">
+              <PropertyRef Name="IdProdus" />
+            </Principal>
+            <Dependent Role="DetaliiComanda">
+              <PropertyRef Name="IdProdus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Favorite__IdProd__440B1D61">
+          <End Role="Produse" Type="Self.Produse" Multiplicity="1" />
+          <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produse">
+              <PropertyRef Name="IdProdus" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="IdProdus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Favorite__IdUtil__44FF419A">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1" />
+          <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="IdUtilizator" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="IdUtilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoluriUti__IdRol__49C3F6B7">
+          <End Role="Roluri" Type="Self.Roluri" Multiplicity="1" />
+          <End Role="RoluriUtilizatori" Type="Self.RoluriUtilizatori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roluri">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="RoluriUtilizatori">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoluriUti__IdUti__4AB81AF0">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1" />
+          <End Role="RoluriUtilizatori" Type="Self.RoluriUtilizatori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="IdUtilizator" />
+            </Principal>
+            <Dependent Role="RoluriUtilizatori">
+              <PropertyRef Name="IdUtilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FlorarieEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Carduri" EntityType="Self.Carduri" />
+          <EntitySet Name="CategoriiProduse" EntityType="Self.CategoriiProduse" />
+          <EntitySet Name="Clienti" EntityType="Self.Clienti" />
+          <EntitySet Name="Comenzi" EntityType="Self.Comenzi" />
+          <EntitySet Name="Cos" EntityType="Self.Cos" />
+          <EntitySet Name="DetaliiComanda" EntityType="Self.DetaliiComanda" />
+          <EntitySet Name="Favorite" EntityType="Self.Favorite" />
+          <EntitySet Name="Livrari" EntityType="Self.Livrari" />
+          <EntitySet Name="Plati" EntityType="Self.Plati" />
+          <EntitySet Name="Produse" EntityType="Self.Produse" />
+          <EntitySet Name="Roluri" EntityType="Self.Roluri" />
+          <EntitySet Name="RoluriUtilizatori" EntityType="Self.RoluriUtilizatori" />
+          <EntitySet Name="Utilizatori" EntityType="Self.Utilizatori" />
+          <AssociationSet Name="FK_Carduri_Clienti" Association="Self.FK_Carduri_Clienti">
+            <End Role="Clienti" EntitySet="Clienti" />
+            <End Role="Carduri" EntitySet="Carduri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plati_Carduri" Association="Self.FK_Plati_Carduri">
+            <End Role="Carduri" EntitySet="Carduri" />
+            <End Role="Plati" EntitySet="Plati" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Produse__IdCateg__48CFD27E" Association="Self.FK__Produse__IdCateg__48CFD27E">
+            <End Role="CategoriiProduse" EntitySet="CategoriiProduse" />
+            <End Role="Produse" EntitySet="Produse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clienti__IdUtilizator" Association="Self.FK_Clienti__IdUtilizator">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Clienti" EntitySet="Clienti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comenzi_Clienti" Association="Self.FK_Comenzi_Clienti">
+            <End Role="Clienti" EntitySet="Clienti" />
+            <End Role="Comenzi" EntitySet="Comenzi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetaliiCo__IdCom__4222D4EF" Association="Self.FK__DetaliiCo__IdCom__4222D4EF">
+            <End Role="Comenzi" EntitySet="Comenzi" />
+            <End Role="DetaliiComanda" EntitySet="DetaliiComanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Livrari__IdComan__45F365D3" Association="Self.FK__Livrari__IdComan__45F365D3">
+            <End Role="Comenzi" EntitySet="Comenzi" />
+            <End Role="Livrari" EntitySet="Livrari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plati__IdComanda__46E78A0C" Association="Self.FK__Plati__IdComanda__46E78A0C">
+            <End Role="Comenzi" EntitySet="Comenzi" />
+            <End Role="Plati" EntitySet="Plati" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cos__IdProdus__403A8C7D" Association="Self.FK__Cos__IdProdus__403A8C7D">
+            <End Role="Produse" EntitySet="Produse" />
+            <End Role="Cos" EntitySet="Cos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cos__IdUtilizato__412EB0B6" Association="Self.FK__Cos__IdUtilizato__412EB0B6">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Cos" EntitySet="Cos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetaliiCo__IdPro__4316F928" Association="Self.FK__DetaliiCo__IdPro__4316F928">
+            <End Role="Produse" EntitySet="Produse" />
+            <End Role="DetaliiComanda" EntitySet="DetaliiComanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Favorite__IdProd__440B1D61" Association="Self.FK__Favorite__IdProd__440B1D61">
+            <End Role="Produse" EntitySet="Produse" />
+            <End Role="Favorite" EntitySet="Favorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Favorite__IdUtil__44FF419A" Association="Self.FK__Favorite__IdUtil__44FF419A">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Favorite" EntitySet="Favorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoluriUti__IdRol__49C3F6B7" Association="Self.FK__RoluriUti__IdRol__49C3F6B7">
+            <End Role="Roluri" EntitySet="Roluri" />
+            <End Role="RoluriUtilizatori" EntitySet="RoluriUtilizatori" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoluriUti__IdUti__4AB81AF0" Association="Self.FK__RoluriUti__IdUti__4AB81AF0">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="RoluriUtilizatori" EntitySet="RoluriUtilizatori" />
+          </AssociationSet>
+          <FunctionImport Name="ProduseCos" ReturnType="Collection(FlorarieModel.ProduseCos_Result)">
+            <Parameter Name="IdUtilizator" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ProduseCos_Result">
+          <Property Type="Int32" Name="IdProdus" Nullable="false" />
+          <Property Type="String" Name="Imagine" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="NumeProdus" Nullable="false" MaxLength="255" />
+          <Property Type="Decimal" Name="Pret" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="Cantitate" Nullable="false" />
+          <Property Type="String" Name="DenumireCategorie" Nullable="false" MaxLength="255" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FlorarieModelStoreContainer" CdmEntityContainer="FlorarieEntities3">
+          <EntitySetMapping Name="Carduri">
+            <EntityTypeMapping TypeName="FlorarieModel.Carduri">
+              <MappingFragment StoreEntitySet="Carduri">
+                <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="NumeCard" ColumnName="NumeCard" />
+                <ScalarProperty Name="NumarCard" ColumnName="NumarCard" />
+                <ScalarProperty Name="DataExpirareCard" ColumnName="DataExpirareCard" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoriiProduse">
+            <EntityTypeMapping TypeName="FlorarieModel.CategoriiProduse">
+              <MappingFragment StoreEntitySet="CategoriiProduse">
+                <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+                <ScalarProperty Name="DenumireCategorie" ColumnName="DenumireCategorie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clienti">
+            <EntityTypeMapping TypeName="FlorarieModel.Clienti">
+              <MappingFragment StoreEntitySet="Clienti">
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdUtilizator" ColumnName="IdUtilizator" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Localitate" ColumnName="Localitate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comenzi">
+            <EntityTypeMapping TypeName="FlorarieModel.Comenzi">
+              <MappingFragment StoreEntitySet="Comenzi">
+                <ScalarProperty Name="IdComanda" ColumnName="IdComanda" />
+                <ScalarProperty Name="DataComanda" ColumnName="DataComanda" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cos">
+            <EntityTypeMapping TypeName="FlorarieModel.Cos">
+              <MappingFragment StoreEntitySet="Cos">
+                <ScalarProperty Name="IdCos" ColumnName="IdCos" />
+                <ScalarProperty Name="IdUtilizator" ColumnName="IdUtilizator" />
+                <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
+                <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetaliiComanda">
+            <EntityTypeMapping TypeName="FlorarieModel.DetaliiComanda">
+              <MappingFragment StoreEntitySet="DetaliiComanda">
+                <ScalarProperty Name="IdDetaliuComanda" ColumnName="IdDetaliuComanda" />
+                <ScalarProperty Name="IdComanda" ColumnName="IdComanda" />
+                <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
+                <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+                <ScalarProperty Name="PretUnitate" ColumnName="PretUnitate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Favorite">
+            <EntityTypeMapping TypeName="FlorarieModel.Favorite">
+              <MappingFragment StoreEntitySet="Favorite">
+                <ScalarProperty Name="IdFavorite" ColumnName="IdFavorite" />
+                <ScalarProperty Name="IdUtilizator" ColumnName="IdUtilizator" />
+                <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
+                <ScalarProperty Name="DataAdaugare" ColumnName="DataAdaugare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Livrari">
+            <EntityTypeMapping TypeName="FlorarieModel.Livrari">
+              <MappingFragment StoreEntitySet="Livrari">
+                <ScalarProperty Name="IdLivrare" ColumnName="IdLivrare" />
+                <ScalarProperty Name="IdComanda" ColumnName="IdComanda" />
+                <ScalarProperty Name="AdresaLivrare" ColumnName="AdresaLivrare" />
+                <ScalarProperty Name="CompanieCurierat" ColumnName="CompanieCurierat" />
+                <ScalarProperty Name="DataLivrare" ColumnName="DataLivrare" />
+                <ScalarProperty Name="StatusLivrare" ColumnName="StatusLivrare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plati">
+            <EntityTypeMapping TypeName="FlorarieModel.Plati">
+              <MappingFragment StoreEntitySet="Plati">
+                <ScalarProperty Name="IdPlata" ColumnName="IdPlata" />
+                <ScalarProperty Name="IdComanda" ColumnName="IdComanda" />
+                <ScalarProperty Name="MetodaPlata" ColumnName="MetodaPlata" />
+                <ScalarProperty Name="Suma" ColumnName="Suma" />
+                <ScalarProperty Name="DataPlata" ColumnName="DataPlata" />
+                <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produse">
+            <EntityTypeMapping TypeName="FlorarieModel.Produse">
+              <MappingFragment StoreEntitySet="Produse">
+                <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
+                <ScalarProperty Name="NumeProdus" ColumnName="NumeProdus" />
+                <ScalarProperty Name="Pret" ColumnName="Pret" />
+                <ScalarProperty Name="Stoc" ColumnName="Stoc" />
+                <ScalarProperty Name="UM" ColumnName="UM" />
+                <ScalarProperty Name="Imagine" ColumnName="Imagine" />
+                <ScalarProperty Name="Descriere" ColumnName="Descriere" />
+                <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roluri">
+            <EntityTypeMapping TypeName="FlorarieModel.Roluri">
+              <MappingFragment StoreEntitySet="Roluri">
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="DenumireRol" ColumnName="DenumireRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoluriUtilizatori">
+            <EntityTypeMapping TypeName="FlorarieModel.RoluriUtilizatori">
+              <MappingFragment StoreEntitySet="RoluriUtilizatori">
+                <ScalarProperty Name="IdRolUtilizator" ColumnName="IdRolUtilizator" />
+                <ScalarProperty Name="IdUtilizator" ColumnName="IdUtilizator" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="DataAcordare" ColumnName="DataAcordare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilizatori">
+            <EntityTypeMapping TypeName="FlorarieModel.Utilizatori">
+              <MappingFragment StoreEntitySet="Utilizatori">
+                <ScalarProperty Name="IdUtilizator" ColumnName="IdUtilizator" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DataCreare" ColumnName="DataCreare" />
+                <ScalarProperty Name="Blocat" ColumnName="Blocat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ProduseCos" FunctionName="FlorarieModel.Store.ProduseCos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FlorarieModel.ProduseCos_Result">
+                <ScalarProperty Name="IdProdus" ColumnName="IdProdus" />
+                <ScalarProperty Name="Imagine" ColumnName="Imagine" />
+                <ScalarProperty Name="NumeProdus" ColumnName="NumeProdus" />
+                <ScalarProperty Name="Pret" ColumnName="Pret" />
+                <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+                <ScalarProperty Name="DenumireCategorie" ColumnName="DenumireCategorie" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

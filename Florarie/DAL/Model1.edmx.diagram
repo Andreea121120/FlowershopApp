@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a37f4ae9e70e4207a96e1aa8cfffdf59" Name="Diagram1">
+        <EntityTypeShape EntityType="FlorarieModel.Carduri" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlorarieModel.CategoriiProduse" Width="1.5" PointX="1.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlorarieModel.Clienti" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlorarieModel.Comenzi" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlorarieModel.Cos" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlorarieModel.DetaliiComanda" Width="1.5" PointX="10.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlorarieModel.Favorite" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlorarieModel.Livrari" Width="1.5" PointX="7.5" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlorarieModel.Plati" Width="1.5" PointX="7.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlorarieModel.Produse" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlorarieModel.Roluri" Width="1.5" PointX="3.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlorarieModel.RoluriUtilizatori" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlorarieModel.Utilizatori" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <AssociationConnector Association="FlorarieModel.FK_Carduri_Clienti" ManuallyRouted="false" />
+        <AssociationConnector Association="FlorarieModel.FK_Plati_Carduri" ManuallyRouted="false" />
+        <AssociationConnector Association="FlorarieModel.FK__Produse__IdCateg__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="FlorarieModel.FK_Clienti__IdUtilizator" ManuallyRouted="false" />
+        <AssociationConnector Association="FlorarieModel.FK_Comenzi_Clienti" ManuallyRouted="false" />
+        <AssociationConnector Association="FlorarieModel.FK__DetaliiCo__IdCom__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="FlorarieModel.FK__Livrari__IdComan__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="FlorarieModel.FK__Plati__IdComanda__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="FlorarieModel.FK__Cos__IdProdus__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="FlorarieModel.FK__Cos__IdUtilizato__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="FlorarieModel.FK__DetaliiCo__IdPro__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="FlorarieModel.FK__Favorite__IdProd__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="FlorarieModel.FK__Favorite__IdUtil__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="FlorarieModel.FK__RoluriUti__IdRol__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="FlorarieModel.FK__RoluriUti__IdUti__4AB81AF0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

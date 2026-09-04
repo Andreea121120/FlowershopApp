@@ -1,0 +1,43 @@
+﻿
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; 
+    width: 250px;
+    height: 100%;
+    background-color: #c277a1;
+    color: white;
+    padding: 1rem;
+    transition: left 0.3s ease; 
+    z-index: 10;
+}
+
+
+.toggle-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #c277a1;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 20;
+}
+
+
+.content {
+    transition: margin-left 0.3s ease;
+    padding: 1rem;
+}
+
+    
+    .content.open {
+        margin-left: 250px;
+    }
+
+
+.sidebar.open {
+    left: 0; 
+}

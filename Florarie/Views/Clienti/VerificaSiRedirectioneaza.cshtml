@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "VerificaSiRedirectioneaza";
+}
+
+<div id="popup" style="display:none;">
+    <p>@ViewBag.Message</p>
+    <button id="closePopup">Închide</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#popup").show();
+
+        $("#closePopup").click(function () {
+            $("#popup").hide();
+            window.location.href = '@Url.Action("Index", "Home")';
+        });
+    });
+</script>
+
+
+<div id="popup" style="display:none;">
+    <p>@ViewBag.Message</p>
+    <button id="closePopup">Închide</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $("#popup").show();
+
+       
+        $("#closePopup").click(function () {
+            $("#popup").hide();
+            window.location.href = '@Url.Action("Index", "Home")';
+        });
+    });
+</script>
+
+

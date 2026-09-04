@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Florarie.DAL.ProduseCos_Result>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    input[type="radio"]:checked + .accordion-content {
+        max-height: 300px;
+    }
+</style>
+<link href="~/style/card.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="~/style/Buttons.css" />
+
+<div style="display: flex; justify-content: space-between; gap: 20px;">
+
+    <div style="flex: 1; text-align: center; margin-top: 40px;">
+        <div class="container">
+            @Html.Partial("~/Views/ProfilUtilizator/_PaginaProfil.cshtml", (Florarie.DAL.Clienti)Session["Client"])
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+        </div>
+    </div>
+
+    <div style="flex: 1; text-align: center; margin-top: 40px;">
+        <h3 class="text-center">Produsele Mele</h3>
+        <div class="table-container">
+            <table class="produse-mele-table">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.NumeProdus)</th>
+                        <th>@Html.DisplayNameFor(model => model.Pret)</th>
+                        <th>@Html.DisplayNameFor(model => model.Cantitate)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.NumeProdus)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Pret)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Cantitate)</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr class="total-row">
+                        <td colspan="2" class="text-end">Total:</td>
+                        <td>@String.Format("{0:0} lei", ViewBag.SumaTotala)</td>
+                    </tr>
+                </tfoot>
+
+            </table>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <div>
+
+                    <div style="display: flex; gap: 10px; justify-content: center;">
+                        <div>
+                            <h4>Metoda de plată este doar cu card</h4>
+                        </div>
+                        <div class="accordion-button" style=" height: 60px;">
+
+                        <form action="@Url.Action("Adauga", "Carduri")">
+                            <button type="submit">Adauga card</button>
+                        </form>
+                        <form action="@Url.Action("FinalizeazaComanda", "Comanda")">
+                            <button type="submit">Trimite</button>
+                        </form>
+                            </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿.produse-mele-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .produse-mele-table th,
+    .produse-mele-table td {
+        text-align: left;
+        padding: 12px;
+        border: 1px solid #c277a1;
+            }
+
+    .produse-mele-table th {
+        background-color: #c277a1;
+        color: #fff; 
+    }
+
+    .produse-mele-table tr:hover {
+        background-color: #c277a1;
+        transition: background-color 0.3s ease;
+    }
+
+    .produse-mele-table .total-row {
+        font-weight: bold;
+       
+    }

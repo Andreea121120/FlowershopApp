@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Florarie.DAL.Produse>
+
+@{
+    ViewBag.Title = "Plante";
+}
+
+<link href="~/style/Paginare.css" rel="stylesheet" type="text/css" />
+
+<h2 class="text-center">Plante</h2>
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var lista in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                <a href="@Url.Action("Detalii", "Produse", new { id = lista.IdProdus })">
+                    <img src="~/Content/Imagini/Plante/@lista.Imagine" class="card-img-top" alt="@lista.NumeProdus">
+                </a>
+                <div class="card-body text-center">
+                    <h5 class="card-title">@lista.NumeProdus</h5>
+                    <p class="card-text">@lista.Pret RON</p>
+                    <form method="post" action="@Url.Action("AdaugaInCos", "Produse",  new { idProdus = lista.IdProdus } )">
+                        <input type="hidden" name="idProdus" value="@lista.IdProdus" />
+                        <input type="hidden" name="cantitate" value="1" />
+                        <button type="submit" class="btn btn-primary">Adaugă în cos</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<nav aria-label="...">
+    <ul class="pagination justify-content-center py-3">
+        <li class="page-item disabled">
+        <li class="page-item @(ViewBag.PaginaCurenta == 1 ? "disabled" : "")"><a class="page-link" href="@Url.Action("Plante","Produse",  new { categorie = ViewBag.Categorie, pagina = ViewBag.PaginaCurenta - 1 })" tabindex="-1" )">Pagina anterioara</a></li>
+        @for (int i = 1; i <= ViewBag.NrPagini; i++)
+        {
+            <li class="page-item @(i== ViewBag.PaginaCurenta ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Plante","Produse", new { categorie = ViewBag.Categorie, pagina = i })">
+                    @i
+                </a>
+            </li>
+        }
+        <li class="page-item @(ViewBag.PaginaCurenta == ViewBag.NrPagini ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Plante","Produse", new { categorie = ViewBag.Categorie, pagina = ViewBag.PaginaCurenta + 1 })">Pagina urmatoare</a>
+        </li>
+
+    </ul>
+</nav>
+
