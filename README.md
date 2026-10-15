@@ -18,37 +18,32 @@ Web application for an online flower shop, built with ASP.NET MVC, featuring two
 - **Database:** SQL Server
 
 
-
 ## Screenshots
 
 ### Home Page
-
 <p align="center">
-  <img src="Home page.png" width="400" alt="Home Page">
+  <img src="./screenshots/Home%20page.png" width="400" alt="Home Page">
 </p>
 
 ### Products
-
 <p align="center">
-  <img src="Products.png" width="400" alt="Products">
+  <img src="./screenshots/Products.png" width="400" alt="Products">
 </p>
 
 ### Shopping Cart
-
 <p align="center">
-  <img src="Shopping cart.png" width="400" alt="Shopping Cart">
+  <img src="./screenshots/Shopping%20cart.png" width="400" alt="Shopping Cart">
 </p>
 
 ### Orders
-
 <p align="center">
-  <img src="Orders.png" width="400" alt="Orders">
+  <img src="./screenshots/Orders.png" width="400" alt="Orders">
 </p>
 
 ### Sign In and Sign Up
-
 <p align="center">
-  <img src="Sign in.png" width="350" alt="Sign In">
-  <img src="Sign up page.png" width="350" alt="Sign Up">
+  <img src="./screenshots/Sign%20in.png" width="350" alt="Sign In">
+  <img src="./screenshots/Sign%20up%20page.png" width="350" alt="Sign Up">
 </p>
+
 
